@@ -1,27 +1,11 @@
-import os
-import time
-import functools
 import numpy as np
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from torch.utils.cpp_extension import load
-parent_dir = os.path.dirname(os.path.abspath(__file__))
-render_utils_cuda = load(
-        name='render_utils_cuda',
-        sources=[
-            os.path.join(parent_dir, path)
-            for path in [os.path.join('cuda', 'render_utils.cpp'), os.path.join('cuda', 'render_utils_kernel.cu')]],
-        verbose=True)
-
-total_variation_cuda = load(
-        name='total_variation_cuda',
-        sources=[
-            os.path.join(parent_dir, path)
-            for path in [os.path.join('cuda', 'total_variation.cpp'), os.path.join('cuda', 'total_variation_kernel.cu')]],
-        verbose=True)
+from render_utils_cuda import render_utils_cuda
+from total_variation_cuda import total_variation_cuda
 
 
 def create_grid(type, **kwargs):

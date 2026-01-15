@@ -1,23 +1,14 @@
-import os
 import time
 import numpy as np
-import cv2
-import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch_scatter import segment_coo
-from torch.utils.cpp_extension import load
 
 from . import grid
 from lib.dvgo_ori import extract_geometry
-parent_dir = os.path.dirname(os.path.abspath(__file__))
-render_utils_cuda = load(
-    name='render_utils_cuda',
-    sources=[
-        os.path.join(parent_dir, path)
-        for path in ['cuda/render_utils.cpp', 'cuda/render_utils_kernel.cu']],
-    verbose=True)
+
+from render_utils_cuda import render_utils_cuda
 
 
 '''Model'''

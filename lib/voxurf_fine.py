@@ -1,10 +1,6 @@
-import os
 import time
 import numpy as np
 from copy import deepcopy
-import cv2
-import math
-import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -12,14 +8,9 @@ from lib.dvgo_ori import extract_geometry
 from torch_scatter import segment_coo
 
 from . import grid
-from torch.utils.cpp_extension import load
-parent_dir = os.path.dirname(os.path.abspath(__file__))
-render_utils_cuda = load(
-        name='render_utils_cuda',
-        sources=[
-            os.path.join(parent_dir, path)
-            for path in [os.path.join('cuda', 'render_utils.cpp'), os.path.join('cuda', 'render_utils_kernel.cu')]],
-        verbose=True)
+
+from render_utils_cuda import render_utils_cuda
+
 
 '''Model'''
 class Voxurf(torch.nn.Module):

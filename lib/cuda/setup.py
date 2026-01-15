@@ -22,6 +22,13 @@ setup(
                 os.path.join(current_dir, 'render_utils_kernel.cu'),
             ],
         ),
+        CUDAExtension(
+            name='total_variation_cuda',
+            sources=[
+                os.path.join(current_dir, 'total_variation.cpp'),
+                os.path.join(current_dir, 'total_variation_kernel.cu'),
+            ],
+        ),
     ],
     cmdclass={
         'build_ext': BuildExtension
