@@ -9,25 +9,13 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from lib.dvgo_ori import extract_geometry
-import math
-import random
 import copy
 from . import grid
 from torch_scatter import segment_coo
-from torch.utils.cpp_extension import load
-parent_dir = os.path.dirname(os.path.abspath(__file__))
-ub360_utils_cuda = load(
-        name='ub360_utils_cuda',
-        sources=[
-            os.path.join(parent_dir, path)
-            for path in ['cuda/ub360_utils.cpp', 'cuda/ub360_utils_kernel.cu']],
-        verbose=True)
-render_utils_cuda = load(
-        name='render_utils_cuda',
-        sources=[
-            os.path.join(parent_dir, path)
-            for path in ['cuda/render_utils.cpp', 'cuda/render_utils_kernel.cu']],
-        verbose=True)
+
+from ub360_utils_cuda import ub360_utils_cuda
+from render_utils_cuda import render_utils_cuda
+
 
 '''Model'''
 class Voxurf(torch.nn.Module):
