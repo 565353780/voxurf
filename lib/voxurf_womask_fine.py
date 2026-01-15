@@ -13,8 +13,8 @@ import copy
 from . import grid
 from torch_scatter import segment_coo
 
-from ub360_utils_cuda import ub360_utils_cuda
-from render_utils_cuda import render_utils_cuda
+import ub360_utils_cuda
+import render_utils_cuda
 
 
 '''Model'''

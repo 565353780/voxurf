@@ -10,10 +10,14 @@ exp_stage = 'fine'
 
 
 data = dict(
-    datadir=os.path.join('.', 'data'),
+    datadir='',
     dataset_type='dtu',
     inverse_y=True,
-    white_bkgd=False,
+    white_bkgd=True,
+    mode=dict(
+        train_all=True,
+        wmask=False,
+    ),
 )
 
 surf_train=dict(

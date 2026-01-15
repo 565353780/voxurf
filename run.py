@@ -1,23 +1,20 @@
-import os, sys, copy, glob, json, time, random, argparse, cv2
+import os, sys, copy, time, random, argparse
 from shutil import copyfile
 from tqdm import tqdm, trange
 import math
-import mmcv
 import imageio
 import numpy as np
 import trimesh
 import logging
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
 from datetime import datetime
+from mmengine import Config
 
 from lib import utils, dtu_eval
 # from torch.utils.tensorboard import SummaryWriter
 from lib.load_data import load_data
-from lib.utils import rgb_to_luminance, get_sobel, calc_grad, \
-    GradLoss, write_ply, load_point_cloud, get_root_logger
-from torch_efficient_distloss import flatten_eff_distloss
+from lib.utils import get_root_logger
 from scipy.spatial.transform import Rotation as Rot
 from scipy.spatial.transform import Slerp
 
@@ -912,7 +909,7 @@ if __name__=='__main__':
     # load setup
     parser = config_parser()
     args = parser.parse_args()
-    cfg = mmcv.Config.fromfile(args.config)
+    cfg = Config.fromfile(args.config)
     # reset the root by the scene id
     if args.scene:
         cfg.expname += "{}".format(args.scene)

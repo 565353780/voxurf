@@ -10,17 +10,21 @@ exp_stage = 'coarse'
 
 
 data = dict(
-    datadir=os.path.join('.', 'data'),
+    datadir='',
     dataset_type='dtu',
     inverse_y=True,
-    white_bkgd= False
+    white_bkgd=True,
+    mode=dict(
+        train_all=True,
+        wmask=False,
+    ),
 )
 
 surf_train=dict(
     load_density_from='',
 
     pg_filter=[1000,],
-    
+
     tv_add_grad_new=True,
     ori_tv=True,
     weight_main=1,    # this is for rgb_add

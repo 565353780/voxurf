@@ -8,7 +8,7 @@ from torch_scatter import segment_coo
 from . import grid
 from lib.dvgo_ori import extract_geometry
 
-from render_utils_cuda import render_utils_cuda
+import render_utils_cuda
 
 
 '''Model'''

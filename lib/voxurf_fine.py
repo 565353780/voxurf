@@ -9,7 +9,7 @@ from torch_scatter import segment_coo
 
 from . import grid
 
-from render_utils_cuda import render_utils_cuda
+import render_utils_cuda
 
 
 '''Model'''

@@ -4,8 +4,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from render_utils_cuda import render_utils_cuda
-from total_variation_cuda import total_variation_cuda
+import render_utils_cuda
+import total_variation_cuda
 
 
 def create_grid(type, **kwargs):
